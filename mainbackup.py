@@ -1,10 +1,10 @@
-# from pathlib import Path
+from pathlib import Path
 from pprint import pprint
 import requests
 from bus import Bus
 from mrt import MRT
 from file import write_file, read_file, exists
-from keys import API_KEY
+
 import pandas as pd
 b = Bus()
 m = MRT()
@@ -42,8 +42,15 @@ combined_stops_and_services_dict = b.combine_stops_and_services(services_stops_d
 mrt_stations = read_file('temp/mrt', 'stations.json')
 combined_mrt = b.add_mrt_data(combined_stops_and_services_dict, mrt_stations)
 write_file(combined_mrt, 'data', 'all')
-pdmrt = pd.DataFrame(combined_mrt)
-pdbus = pd.DataFrame(combined_stops_and_services_dict)
+pd_combined_mrt = pd.DataFrame(combined_mrt)
+pd_combined_stops_and_services = pd.DataFrame(combined_stops_and_services_dict)
 
-pdmrt.head()
-pdbus.head()
+def get_data(api):
+        response = requests.get(f"{api}")
+        if response.status_code == 200:
+            print("sucessfully fetched the data")
+            self.formatted_print(response.json())
+        else:
+            print(f"Hello person, there's a {response.status_code} error with your request")
+            
+get_data("http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=83139")
