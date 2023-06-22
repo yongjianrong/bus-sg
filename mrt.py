@@ -133,5 +133,5 @@ class MRT:
       return []
 
 # pprint(
-# MRT().get_stations()
+MRT().get_stations()
 # )

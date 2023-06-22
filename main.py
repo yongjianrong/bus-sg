@@ -12,24 +12,24 @@ print("Writing temporary data files ...")
 
 # BUS
 # nand because always need to write files unless both are there
-if not ( exists('temp/bus', 'services_stops_dict.json') and exists('temp/bus', 'all_stops_dict.json') ):
-  print("- Writing BUS files ...")
-  all_services = b.get_services()
-  services_stops_dict = b.get_stops_for_each_service(all_services)
-  write_file(services_stops_dict, 'temp/bus', 'services_stops_dict')
+# if not ( exists('temp/bus', 'services_stops_dict.json') and exists('temp/bus', 'all_stops_dict.json') ):
+#   print("- Writing BUS files ...")
+#   all_services = b.get_services()
+#   services_stops_dict = b.get_stops_for_each_service(all_services)
+#   write_file(services_stops_dict, 'temp/bus', 'services_stops_dict')
 
-  all_stops_dict = b.get_all_stops()
-  write_file(all_stops_dict, 'temp/bus', 'all_stops_dict')
-  print("- BUS files written")
+#   all_stops_dict = b.get_all_stops()
+#   write_file(all_stops_dict, 'temp/bus', 'all_stops_dict')
+#   print("- BUS files written")
 
-# MRT
-if not ( exists('temp/mrt', 'stations.json') ):
-  print("- Writing MRT files ...")
-  mrt_stations = m.get_stations()
-  write_file(mrt_stations, 'temp/mrt', 'stations')
-  print("- MRT files written")
+# # MRT
+# if not ( exists('temp/mrt', 'stations.json') ):
+#   print("- Writing MRT files ...")
+#   mrt_stations = m.get_stations()
+#   write_file(mrt_stations, 'temp/mrt', 'stations')
+#   print("- MRT files written")
 
-print("Temporary data files have been written")
+# print("Temporary data files have been written")
 
 # All files have been made if they don't exist
 
